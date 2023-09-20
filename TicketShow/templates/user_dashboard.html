@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.5;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            p.lead {
+                display: none;
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Media query to target screens with a max-width of 768 pixels */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                /* You can adjust this value according to your needs */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ratings-nav-item {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">User Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('book_tickets') }}">Ticket Booking</a>
+                </li>
+                </li>
+                <li class="nav-item ratings-nav-item">
+                    <a class="nav-link" href="{{ url_for('rating') }}">Ratings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('userbookings') }}">Bookings</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('get_user_profile') }}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="venues" id="venues-container">
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1>Welcome to {{ current_user.username }} dashboard!</h1>
+                <p class="lead">Here you can easily book your tickets and manage your bookings. To book a ticket, simply
+                    click on the "Ticket Booking" link and you'll be taken to our ticket booking page. From there, you
+                    can choose the date, time, and number of tickets you want to book, and complete the payment process.
+                    If you want to check your previous bookings, simply click on the "Bookings" link and you'll be able
+                    to see all your past and upcoming bookings. Enjoy your experience on our platform and feel free to
+                    contact us if you have any questions or concerns!</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Add the jQuery code to keep the navbar toggler always open in mobile
+        $(document).ready(function () {
+            function checkWidth() {
+                if ($(window).width() <= 768) {
+                    $('#navbarNav').addClass('show');
+                } else {
+                    $('#navbarNav').removeClass('show');
+                }
+            }
+
+            // Initial check
+            checkWidth();
+
+            // Check when the window resizes
+            $(window).resize(checkWidth);
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
